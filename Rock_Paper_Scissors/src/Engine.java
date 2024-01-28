@@ -3,15 +3,20 @@ public abstract class Engine {
 
         int random = (int) (Math.random() * 3);
 
-        String result = "";
+        getYourDecizion(random);
 
-        if (random == 0) result = "камень";
-        else if (random == 1) result = "ножницы";
-        else if (random == 2) result = "бумага";
-
-        System.out.println(result);
         return random;
     }
+
+    void getYourDecizion(int ordinal) {     //TODO взял идею у: https://stackoverflow.com/users/562557/thebenedict
+        Variants ret = null;
+        for (Variants type : Variants.values()) {
+            if (type.getCodeVariant() == ordinal)
+                ret = type;
+        }
+        System.out.println(ret);
+    }
+
     void Rock () {
         switch (newRandomStatment()) {
             case 0:

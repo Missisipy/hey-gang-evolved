@@ -1,10 +1,21 @@
 import java.util.Scanner;
 
 enum Variants {
+    КАМЕНЬ(0),   //TODO это константные
+    НОЖНИЦЫ(1),  // значения и они
+    БУМАГА(2);   // обозначаются курсивом
 
-    КАМЕНЬ,   //TODO это константные
-    НОЖНИЦЫ,  // значения и они
-    БУМАГА    // обозначаются курсивом
+    private int codeVariant;
+
+    private Variants (int codeVariant) {
+
+        this.codeVariant = codeVariant;
+    }
+
+    int getCodeVariant () {
+
+        return codeVariant;
+    }
 }
 public class varAnswer extends Engine{
 
