@@ -1,23 +1,45 @@
+import java.util.Scanner;
+
+enum Variants {
+
+    КАМЕНЬ,   //TODO это константные
+    НОЖНИЦЫ,  // значения и они
+    БУМАГА    // обозначаются курсивом
+}
 public class varAnswer extends Engine{
 
-    String selectedAnswerOption;
+    private Scanner scanner = new Scanner(System.in);
+    private String inValue = scanner.nextLine().toLowerCase();
+    private int selectedAnswerOption;
 
-    varAnswer (String selectedAnswerOption) {
+    varAnswer () {
 
-        this.selectedAnswerOption = selectedAnswerOption;
+        if (inValue.equals("камень")) {
+            this.selectedAnswerOption = Variants.КАМЕНЬ.ordinal();
+        } else if (inValue.equals("ножницы")) {
+            this.selectedAnswerOption = Variants.НОЖНИЦЫ.ordinal();
+        } else if (inValue.equals("бумага")) {
+            this.selectedAnswerOption = Variants.БУМАГА.ordinal();
+        } else this.selectedAnswerOption = -1;
     }
+    int getSelectedAnswerOption () {
 
-    void getResultGame (String resByConsole, String resRandom) {
+        return selectedAnswerOption;
+    }
+    void getResultGame (int resByConsole) {
 
         switch (resByConsole) {
-            case "Камень":
-                Rock(resRandom);
+            case 0:
+                Rock();
                 break;
-            case "Ножницы":
-                Scissors(resRandom);
+            case 1:
+                Scissors();
                 break;
-            case "Бумага":
-                Paper(resRandom);
+            case 2:
+                Paper();
+                break;
+            default:
+                notRulesGame();
                 break;
         }
     }

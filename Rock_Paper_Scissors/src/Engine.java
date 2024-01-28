@@ -1,61 +1,71 @@
-
 public abstract class Engine {
-
-    String newRandomStatment () {
+    int newRandomStatment () {
 
         int random = (int) (Math.random() * 3);
 
-        System.out.println(random);
-
         String result = "";
 
-        if (random == 0) result = "Камень";
-        else if (random == 1) result = "Ножницы";
-        else if (random == 2) result = "Бумага";
+        if (random == 0) result = "камень";
+        else if (random == 1) result = "ножницы";
+        else if (random == 2) result = "бумага";
 
         System.out.println(result);
-        return result;
+        return random;
     }
-
-    void Rock (String x) {
-        switch (x) {
-            case "Камень":
-                System.out.println("Ничья");
+    void Rock () {
+        switch (newRandomStatment()) {
+            case 0:
+                None();
                 break;
-            case "Ножницы":
-                System.out.println("Вы выиграли");
+            case 1:
+                Win();
                 break;
-            case "Бумага":
-                System.out.println("Вы проиграли");
+            case 2:
+                Lose();
                 break;
         }
     }
-
-    void Scissors (String x) {
-        switch (x) {
-            case "Ножницы":
-                System.out.println("Ничья");
+    void Scissors () {
+        switch (newRandomStatment()) {
+            case 1:
+                None();
                 break;
-            case "Бумага":
-                System.out.println("Вы выиграли");
+            case 2:
+                Win();
                 break;
-            case "Камень":
-                System.out.println("Вы проиграли");
+            case 0:
+                Lose();
                 break;
         }
     }
-
-    void Paper (String x) {
-        switch (x) {
-            case "Бумага":
-                System.out.println("Ничья");
+    void Paper () {
+        switch (newRandomStatment()) {
+            case 2:
+                None();
                 break;
-            case "Камень":
-                System.out.println("Вы выиграли");
+            case 0:
+                Win();
                 break;
-            case "Ножницы":
-                System.out.println("Вы проиграли");
+            case 1:
+                Lose();
                 break;
         }
+    }
+    void notRulesGame () {
+
+        System.out.println("Введите одно из следующих: ");
+        for (Variants a : Variants.values()) {
+
+            System.out.println(a);
+        }
+    }
+    void None () {
+        System.out.println("Ничья");
+    }
+    void Win () {
+        System.out.println("Вы выиграли");
+    }
+    void Lose () {
+        System.out.println("Вы проиграли");
     }
 }
