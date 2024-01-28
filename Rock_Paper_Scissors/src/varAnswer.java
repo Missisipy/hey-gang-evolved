@@ -3,7 +3,7 @@ import java.util.Scanner;
 enum Variants {
     КАМЕНЬ(0),   //TODO это константные
     НОЖНИЦЫ(1),  // значения и они
-    БУМАГА(2);   // обозначаются курсивом
+    БУМАГА(2);   // обозначаются заглавными !camelCase
 
     private int codeVariant;
 
@@ -20,18 +20,20 @@ enum Variants {
 public class varAnswer extends Engine{
 
     private Scanner scanner = new Scanner(System.in);
-    private String inValue = scanner.nextLine().toLowerCase();
     private int selectedAnswerOption;
 
     varAnswer () {
 
-        if (inValue.equals("камень")) {
-            this.selectedAnswerOption = Variants.КАМЕНЬ.ordinal();
-        } else if (inValue.equals("ножницы")) {
-            this.selectedAnswerOption = Variants.НОЖНИЦЫ.ordinal();
-        } else if (inValue.equals("бумага")) {
-            this.selectedAnswerOption = Variants.БУМАГА.ordinal();
-        } else this.selectedAnswerOption = -1;
+        String inValue = scanner.nextLine().toUpperCase();
+        for (Variants x : Variants.values()) {
+
+            if (x.name().equals(inValue)) {
+                this.selectedAnswerOption = x.getCodeVariant();
+                break;
+            } else {
+                this.selectedAnswerOption = -1;
+            }
+        }
     }
     int getSelectedAnswerOption () {
 

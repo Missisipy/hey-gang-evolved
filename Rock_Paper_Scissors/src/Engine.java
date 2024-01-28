@@ -3,18 +3,18 @@ public abstract class Engine {
 
         int random = (int) (Math.random() * 3);
 
-        getYourDecizion(random);
+        System.out.println(getYourDecizion(random));
 
         return random;
     }
 
-    void getYourDecizion(int ordinal) {     //TODO взял идею у: https://stackoverflow.com/users/562557/thebenedict
+    Variants getYourDecizion(int ordinal) {     //TODO взял идею у: https://stackoverflow.com/users/562557/thebenedict
         Variants ret = null;
         for (Variants type : Variants.values()) {
             if (type.getCodeVariant() == ordinal)
                 ret = type;
         }
-        System.out.println(ret);
+        return ret;
     }
 
     void Rock () {
@@ -58,19 +58,23 @@ public abstract class Engine {
     }
     void notRulesGame () {
 
-        System.out.println("Введите одно из следующих: ");
+        System.out.println("Введите одно из следующих:");
         for (Variants a : Variants.values()) {
 
             System.out.println(a);
         }
+        varAnswer variant1 = new varAnswer();
+        variant1.getResultGame(variant1.getSelectedAnswerOption());
     }
     void None () {
-        System.out.println("Ничья");
+        System.out.println("Ничья\n");
+        varAnswer variant1 = new varAnswer();
+        variant1.getResultGame(variant1.getSelectedAnswerOption());
     }
     void Win () {
-        System.out.println("Вы выиграли");
+        System.out.println("Вы выиграли\n");
     }
     void Lose () {
-        System.out.println("Вы проиграли");
+        System.out.println("Вы проиграли\n");
     }
 }
