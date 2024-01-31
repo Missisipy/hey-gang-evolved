@@ -1,5 +1,5 @@
-public abstract class Engine {
-    int newRandomStatment () {
+public interface Engine {
+    static int newRandomStatment () {
 
         int random = (int) (Math.random() * 3);
 
@@ -7,8 +7,7 @@ public abstract class Engine {
 
         return random;
     }
-
-    Variants getYourDecizion(int ordinal) {     //TODO взял идею у: https://stackoverflow.com/users/562557/thebenedict
+    static Variants getYourDecizion(int ordinal) {
         Variants ret = null;
         for (Variants type : Variants.values()) {
             if (type.getCodeVariant() == ordinal)
@@ -16,8 +15,7 @@ public abstract class Engine {
         }
         return ret;
     }
-
-    void Rock () {
+    static void Rock () {
         switch (newRandomStatment()) {
             case 0:
                 None();
@@ -30,7 +28,7 @@ public abstract class Engine {
                 break;
         }
     }
-    void Scissors () {
+    static void Scissors () {
         switch (newRandomStatment()) {
             case 1:
                 None();
@@ -43,7 +41,7 @@ public abstract class Engine {
                 break;
         }
     }
-    void Paper () {
+    static void Paper () {
         switch (newRandomStatment()) {
             case 2:
                 None();
@@ -56,25 +54,26 @@ public abstract class Engine {
                 break;
         }
     }
-    void notRulesGame () {
+    static void notRulesGame () {
 
         System.out.println("Введите одно из следующих:");
+
         for (Variants a : Variants.values()) {
 
             System.out.println(a);
         }
-        varAnswer variant1 = new varAnswer();
-        variant1.getResultGame(variant1.getSelectedAnswerOption());
+        VarAnswer.getResultGame();
     }
-    void None () {
+    static void None () {
+
         System.out.println("Ничья\n");
-        varAnswer variant1 = new varAnswer();
-        variant1.getResultGame(variant1.getSelectedAnswerOption());
+
+        VarAnswer.getResultGame();
     }
-    void Win () {
+    static void Win () {
         System.out.println("Вы выиграли\n");
     }
-    void Lose () {
+    static void Lose () {
         System.out.println("Вы проиграли\n");
     }
 }
