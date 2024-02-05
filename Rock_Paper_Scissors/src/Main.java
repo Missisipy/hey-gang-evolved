@@ -2,6 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        VarAnswer.getResultGame();
+        VarAnswer variant = new VarAnswer();
+
+        variant.getResultGame();
     }
 }
