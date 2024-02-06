@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class VarAnswer {
-    void notRulesGame () {
+    private void notRulesGame () {
 
         System.out.println("Введите одно из следующих:");
 
@@ -11,19 +11,19 @@ public class VarAnswer {
         }
         getResultGame();
     }
-    void None () {
+    private void None () {
 
         System.out.println("Ничья");
 
         getResultGame();
     }
-    void Win () {
+    private void Win () {
         System.out.println("Вы выиграли");
     }
-    void Lose () {
+    private void Lose () {
         System.out.println("Вы проиграли");
     }
-    void getResultGame () {
+    public void getResultGame () {
 
         Variants player = getSelectedAnswerOption();
 
@@ -37,12 +37,12 @@ public class VarAnswer {
 
             if (player.equals(console)) None();
             else if ((player.equals(Variants.ROCK) && console.equals(Variants.SCISSORS)) ||
-                     (player.equals(Variants.SCISSORS) && console.equals(Variants.PAPER)) ||
+                     ((player.equals(Variants.SCISSORS)) && console.equals(Variants.PAPER)) ||
                      (player.equals(Variants.PAPER) && console.equals(Variants.ROCK))) Win();
             else Lose();
         }
     }
-    Variants getSelectedAnswerOption () {
+    private Variants getSelectedAnswerOption () {
 
         Scanner scanner = new Scanner(System.in);
         String selectedAnswerOption = scanner.nextLine();
@@ -58,9 +58,9 @@ public class VarAnswer {
         }
         return inValue;
     }
-    Variants newRandomStatment() {
+    private Variants newRandomStatment() {
 
-        int random = (int) (Math.random() * 3);
+        int random = (int) (Math.random() * Variants.values().length);
 
         Variants ret = null;
 
