@@ -35,21 +35,11 @@ public class VarAnswer {
 
             Variants console = newRandomStatment();
 
-            if (player.equals(Variants.ROCK)) {
-                if (console.equals(Variants.ROCK)) None();
-                if (console.equals(Variants.SCISSORS)) Win();
-                if (console.equals(Variants.PAPER)) Lose();
-            }
-            if (player.equals(Variants.SCISSORS)) {
-                if (console.equals(Variants.ROCK)) Lose();
-                if (console.equals(Variants.SCISSORS)) None();
-                if (console.equals(Variants.PAPER)) Win();
-            }
-            if (player.equals(Variants.PAPER)) {
-                if (console.equals(Variants.ROCK)) Win();
-                if (console.equals(Variants.SCISSORS)) Lose();
-                if (console.equals(Variants.PAPER)) None();
-            }
+            if (player.equals(console)) None();
+            else if ((player.equals(Variants.ROCK) && console.equals(Variants.SCISSORS)) ||
+                     (player.equals(Variants.SCISSORS) && console.equals(Variants.PAPER)) ||
+                     (player.equals(Variants.PAPER) && console.equals(Variants.ROCK))) Win();
+            else Lose();
         }
     }
     Variants getSelectedAnswerOption () {
