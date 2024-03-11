@@ -1,3 +1,5 @@
 enum Variants {
-    ROCK, SCISSORS, PAPER
+    ROCK,
+    SCISSORS,
+    PAPER
 }

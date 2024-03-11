@@ -1,39 +1,33 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Task1 {
 
     public static void main(String[] args) {
 
-        int num;
+        ArrayList<Integer> array = new ArrayList<>();
+        array.add(3);
+        array.add(8);
+        array.add(15);
+        array.add(17);
+        array.add(23);
+        array.add(0);
+        array.add(6);
+        array.add(26);
+        array.add(-3);
+        array.add(-31);
+        array.add(123);
+        array.add(-100);
 
-        Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Integer> list = new ArrayList<>();
-        System.out.println("Введите значение числа: ");
-        num = scanner.nextInt();
-        System.out.println("Введите длину массива:");
-        int i = scanner.nextInt();
-        System.out.println("Введите числа массива:");
-        while (i > 0) {
+        for (int x: array) {
 
-            list.add(scanner.nextInt());
-            i--;
-        }
+            int result = 23;
+            if (array.contains(result - x) && (array.indexOf(x) < array.indexOf(result - x))) {
 
-        Set<Integer> result = new LinkedHashSet<>();
-
-        for (int x : list) {
-
-            for (int y : list) {
-
-                if ((y != x) && ((y + x) == num)) {
-
-                    result.add(list.indexOf(x));
-                    result.add(list.indexOf(y));
-
-                }
+                    int[] res = new int[]{array.indexOf(x), array.indexOf(result - x)};
+                    System.out.println(Arrays.toString(res));
             }
         }
-        System.out.println(result);
     }
 }
